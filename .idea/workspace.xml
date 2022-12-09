@@ -2,52 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4defd910-ba88-4657-91a2-1235fd60e5a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/empty.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/MyHighlighterPainter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$10.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$11.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$12.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$13.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$14.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$15.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$16.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$17.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$18.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$19.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$20.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$21.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$22.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$23.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$24.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$25.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$26.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$27.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$28.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$29.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$30.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$31.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$32.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$33.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$34.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$35.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$6.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$7.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$8.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$9.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$DrawingPanel$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$DrawingPanel$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$DrawingPanel$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$DrawingPanel$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$DrawingPanel$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice$DrawingPanel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Editor/Practice.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hey hi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hey hi.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TextEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/editor.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +56,7 @@
       <updated>1670092826097</updated>
       <workItem from="1670092829013" duration="5471000" />
       <workItem from="1670513708334" duration="613000" />
-      <workItem from="1670574960032" duration="17710000" />
+      <workItem from="1670574960032" duration="21352000" />
     </task>
     <servers />
   </component>

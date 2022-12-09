@@ -4,7 +4,6 @@ import java.awt.datatransfer.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
@@ -19,15 +18,16 @@ public class TextEditor extends JFrame implements ActionListener {
     JFrame frame;
     //Creating the panel
     JPanel panel = new JPanel();
-    JTextArea text;
+    JTextArea text,findtxt,reptxt;
+    JTextField from, to;
     JScrollPane scrollpane;
     JLabel sizelabel, fontlabel;
     JSpinner spinner;
     JComboBox<String> fontbox;
     JMenuBar menubar;
-    JMenu osemenu, ccpmenu;
-    JLabel display = new JLabel("Hi");
-    JMenuItem open, save, exit, cut, copy, paste, delete, find, replace, replaceall;
+    JMenu osemenu, ccpdmenu;
+    JLabel display = new JLabel("");
+    JMenuItem open, save, exit, cut, copy, paste, delete, bold, italic, under, cross, find, replace, replaceall;
 
 //</Initialize>
 
@@ -47,7 +47,9 @@ public class TextEditor extends JFrame implements ActionListener {
 
 //<TextArea>
         //Creating text area for typing
-        text = new JTextArea("Type Here");
+        text = new JTextArea("Created by - Suchit Reddi(2010110507)" + "\n" +
+                "Can be found at https://github.com/SuchitReddi/Text_Editor" + "\n" +
+                "Bold, Italic, Underline and crossover can be found in edit\n");
         //Wraps the line when a character reaches the end of line
         text.setLineWrap(true);
         //Wraps the whole word the character belongs to
@@ -64,16 +66,15 @@ public class TextEditor extends JFrame implements ActionListener {
         open = new JMenuItem("Open");
         save = new JMenuItem("Save");
         exit = new JMenuItem("Exit");
-        //cut, copy, paste menu
-        ccpmenu = new JMenu("Edit");
+        //cut, copy, paste, delete menu
+        ccpdmenu = new JMenu("Edit");
         cut = new JMenuItem("Cut");
         copy = new JMenuItem("Copy");
         paste = new JMenuItem("Paste");
         delete = new JMenuItem("Delete");
-        //find, replace, replace-all
-        find = new JMenuItem("Find");
-        replace = new JMenuItem("Replace");
-        replaceall = new JMenuItem("Replace All");
+        //bold, italic
+        bold = new JMenuItem("Bold");
+        italic = new JMenuItem("Italic");
 
         //Adding action listeners to all functionalities
         open.addActionListener(this);
@@ -83,9 +84,8 @@ public class TextEditor extends JFrame implements ActionListener {
         copy.addActionListener(this);
         paste.addActionListener(this);
         delete.addActionListener(this);
-        find.addActionListener(this);
-        replace.addActionListener(this);
-        replaceall.addActionListener(this);
+        bold.addActionListener(this);
+        italic.addActionListener(this);
 
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
@@ -93,16 +93,15 @@ public class TextEditor extends JFrame implements ActionListener {
         osemenu.add(open);
         osemenu.add(save);
         osemenu.add(exit);
-        ccpmenu.add(cut);
-        ccpmenu.add(copy);
-        ccpmenu.add(paste);
-        ccpmenu.add(delete);
-        ccpmenu.add(find);
-        ccpmenu.add(replace);
-        ccpmenu.add(replaceall);
+        ccpdmenu.add(cut);
+        ccpdmenu.add(copy);
+        ccpdmenu.add(paste);
+        ccpdmenu.add(delete);
+        ccpdmenu.add(bold);
+        ccpdmenu.add(italic);
         menubar.add(display);
         menubar.add(osemenu);
-        menubar.add(ccpmenu);
+        menubar.add(ccpdmenu);
 //</MenuBar>
 
 //<ScrollPane>
@@ -142,6 +141,22 @@ public class TextEditor extends JFrame implements ActionListener {
         fontbox.setSelectedItem("Times New Roman");
 //</FontChange>
 
+//<Find/Replace>
+        findtxt = new JTextArea("Find");
+        JTextField from = new JTextField(8);
+        from.setBounds(80, 28, 100, 20);
+        JTextField to = new JTextField(8);
+        to.setBounds(80, 53,100, 20);
+        reptxt = new JTextArea("Replace");
+        panel.setLayout(null);
+        panel.add(from);
+        panel.add(to);
+        JButton replace = new JButton("Replace");
+        replace.setBounds(10, 90,230, 50);
+        panel.add(new JLabel("with"));
+        panel.add(replace);
+//</Find/Replace>
+
 //<AddToFrame>
         frame.setJMenuBar(menubar);
         frame.add(sizelabel);
@@ -149,8 +164,8 @@ public class TextEditor extends JFrame implements ActionListener {
         frame.add(fontlabel);
         frame.add(fontbox);
         frame.add(scrollpane);
-        frame.add(panel);
         panel.add(display);
+        frame.add(panel);
         //setVisible should be at last, or else some components won't be visible
         frame.setVisible(true);
 //</AddToFrame>
@@ -298,6 +313,15 @@ public class TextEditor extends JFrame implements ActionListener {
             text.setText("");
         }
 //</Delete>
+        if (e.getSource() == bold) {
+            //replace the text area with bold
+            text.setFont(new Font((String) fontbox.getSelectedItem(), Font.BOLD, text.getFont().getSize()));
+        }
+
+        if (e.getSource() == italic) {
+            //replace the text area with italic
+            text.setFont(new Font((String) fontbox.getSelectedItem(), Font.ITALIC, text.getFont().getSize()));
+        }
 
 //</EventHandler>
     }
