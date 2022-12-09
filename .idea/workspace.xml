@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4defd910-ba88-4657-91a2-1235fd60e5a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Text_Editor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TextEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/editor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Programming/Java/Java/src/Login.java",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -54,6 +52,8 @@
       <option name="presentableId" value="Default" />
       <updated>1670092826097</updated>
       <workItem from="1670092829013" duration="5471000" />
+      <workItem from="1670513708334" duration="613000" />
+      <workItem from="1670574960032" duration="6509000" />
     </task>
     <servers />
   </component>

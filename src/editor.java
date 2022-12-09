@@ -26,7 +26,7 @@ public class editor extends JFrame implements ActionListener {
 //            System.out.println(element);
 //        }
         font = new JComboBox(fonts);
-        font.addActionListener(this);
+//        font.addActionListener(this);
         font.setSelectedItem("Calibri");
 
         frame.add(textArea);

@@ -1,165 +1,178 @@
 
 import java.awt.*;
-        import java.awt.event.*;
-        import java.io.*;
-        import java.util.*;
-        import javax.swing.*;
-        import javax.swing.event.*;
-        import javax.swing.filechooser.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.filechooser.*;
+
 
 public class TextEditor extends JFrame implements ActionListener{
 
-    JTextArea textArea;
-    JScrollPane scrollPane;
-    JLabel fontLabel;
-    JSpinner fontSizeSpinner;
-    JButton fontColorButton;
-    JComboBox fontBox;
+    public static void main(String[] args) {
+        new TextEditor();
+    }
 
+    JFrame frame;
+    //Creating the panel
+    JPanel panel = new JPanel();
+    JTextArea text;
+    JScrollPane scrollPane;
+    JLabel sizelabel;
+    JSpinner spinner;
+    JButton colorbutton;
+    JComboBox fontBox;
     JMenuBar menuBar;
     JMenu fileMenu;
-    JMenuItem openItem;
-    JMenuItem saveItem;
-    JMenuItem exitItem;
+    JMenuItem open;
+    JMenuItem save;
+    JMenuItem exit;
+        TextEditor() {
 
-    TextEditor(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Bro text Editor");
-        this.setSize(500, 500);
-        this.setLayout(new FlowLayout());
-        this.setLocationRelativeTo(null);
+            //Creating the frame
+            frame = new JFrame("Text Editor");
+            //Setting layout, size, and location of the frame
+            frame.setLayout(new FlowLayout());
+            panel.setLayout(new FlowLayout());
+            frame.setSize(1500, 800);
+            frame.setLocationRelativeTo(panel);
+            //Stop program once we close the window
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        textArea = new JTextArea();
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setFont(new Font("Arial",Font.PLAIN,20));
+            //Creating text area for typing
+            text = new JTextArea("Type Here");
+            //Wraps the line when a character reaches the end of line
+            text.setLineWrap(true);
+            //Wraps the whole word the character belongs to
+            text.setWrapStyleWord(true);
+            //Set the default font, type, and size
+            text.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 
-        scrollPane = new JScrollPane(textArea);
-        scrollPane.setPreferredSize(new Dimension(450,450));
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            //Convert the text area scrollable
+            scrollPane = new JScrollPane(text);
+            //setSize doesn't work here, so we have to use setPreferredSize
+            scrollPane.setPreferredSize(new Dimension(1450, 700));
+            //Change the policy to change when the scrollbar should appear
+            scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            //Horizontal scrollbar is only needed when word wrap is off.
+            //scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        fontLabel = new JLabel("Font: ");
+            //Create font size spinner
+            sizelabel = new JLabel("Font Size");
+            spinner = new JSpinner();
+            spinner.setPreferredSize(new Dimension(40, 20));
+            //Setting default value of font size the spinner should show (not the default font size of text)
+            spinner.setValue(15);
+            //We have to add a change listener to actually apply the changes from the spinner
+            spinner.addChangeListener(e -> {
+                //Keep the same font, type and change only the size by listening to the spinner and taking in its value
+                text.setFont(new Font(text.getFont().getFamily(), Font.PLAIN, (int) spinner.getValue()));
+            });
 
-        fontSizeSpinner = new JSpinner();
-        fontSizeSpinner.setPreferredSize(new Dimension(50,25));
-        fontSizeSpinner.setValue(20);
-        fontSizeSpinner.addChangeListener(new ChangeListener() {
+            colorbutton = new JButton("Change Color");
+            colorbutton.addActionListener(this);
 
-            @Override
-            public void stateChanged(ChangeEvent e) {
+            String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
-                textArea.setFont(new Font(textArea.getFont().getFamily(),Font.PLAIN,(int) fontSizeSpinner.getValue()));
+            fontBox = new JComboBox(fonts);
+            fontBox.addActionListener(this);
+            fontBox.setSelectedItem("Times New Roman");
+
+            // ------ menubar ------
+
+            menuBar = new JMenuBar();
+            fileMenu = new JMenu("File");
+            open = new JMenuItem("Open");
+            save = new JMenuItem("Save");
+            exit = new JMenuItem("Exit");
+
+            open.addActionListener(this);
+            save.addActionListener(this);
+            exit.addActionListener(this);
+
+            fileMenu.add(open);
+            fileMenu.add(save);
+            fileMenu.add(exit);
+            menuBar.add(fileMenu);
+
+            // ------ /menubar ------
+
+            frame.setJMenuBar(menuBar);
+            frame.add(sizelabel);
+            frame.add(spinner);
+            frame.add(colorbutton);
+            frame.add(fontBox);
+            frame.add(scrollPane);
+            frame.setVisible(true);
+        }
+
+        @Override
+        public void actionPerformed (ActionEvent e){
+
+            if (e.getSource() == colorbutton) {
+                JColorChooser colorChooser = new JColorChooser();
+
+                Color color = colorChooser.showDialog(null, "Choose a color", Color.black);
+
+                text.setForeground(color);
             }
 
-        });
+            if (e.getSource() == fontBox) {
+                text.setFont(new Font((String) fontBox.getSelectedItem(), Font.PLAIN, text.getFont().getSize()));
+            }
 
-        fontColorButton = new JButton("Color");
-        fontColorButton.addActionListener(this);
+            if (e.getSource() == open) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setCurrentDirectory(new File("."));
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "txt");
+                fileChooser.setFileFilter(filter);
 
-        String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+                int response = fileChooser.showOpenDialog(null);
 
-        fontBox = new JComboBox(fonts);
-        fontBox.addActionListener(this);
-        fontBox.setSelectedItem("Arial");
+                if (response == JFileChooser.APPROVE_OPTION) {
+                    File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                    Scanner fileIn = null;
 
-        // ------ menubar ------
-
-        menuBar = new JMenuBar();
-        fileMenu = new JMenu("File");
-        openItem = new JMenuItem("Open");
-        saveItem = new JMenuItem("Save");
-        exitItem = new JMenuItem("Exit");
-
-        openItem.addActionListener(this);
-        saveItem.addActionListener(this);
-        exitItem.addActionListener(this);
-
-        fileMenu.add(openItem);
-        fileMenu.add(saveItem);
-        fileMenu.add(exitItem);
-        menuBar.add(fileMenu);
-
-        // ------ /menubar ------
-
-        this.setJMenuBar(menuBar);
-        this.add(fontLabel);
-        this.add(fontSizeSpinner);
-        this.add(fontColorButton);
-        this.add(fontBox);
-        this.add(scrollPane);
-        this.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource()==fontColorButton) {
-            JColorChooser colorChooser = new JColorChooser();
-
-            Color color = colorChooser.showDialog(null, "Choose a color", Color.black);
-
-            textArea.setForeground(color);
-        }
-
-        if(e.getSource()==fontBox) {
-            textArea.setFont(new Font((String)fontBox.getSelectedItem(),Font.PLAIN,textArea.getFont().getSize()));
-        }
-
-        if(e.getSource()==openItem) {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setCurrentDirectory(new File("."));
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "txt");
-            fileChooser.setFileFilter(filter);
-
-            int response = fileChooser.showOpenDialog(null);
-
-            if(response == JFileChooser.APPROVE_OPTION) {
-                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                Scanner fileIn = null;
-
-                try {
-                    fileIn = new Scanner(file);
-                    if(file.isFile()) {
-                        while(fileIn.hasNextLine()) {
-                            String line = fileIn.nextLine()+"\n";
-                            textArea.append(line);
+                    try {
+                        fileIn = new Scanner(file);
+                        if (file.isFile()) {
+                            while (fileIn.hasNextLine()) {
+                                String line = fileIn.nextLine() + "\n";
+                                text.append(line);
+                            }
                         }
+                    } catch (FileNotFoundException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    } finally {
+                        fileIn.close();
                     }
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                finally {
-                    fileIn.close();
                 }
             }
-        }
-        if(e.getSource()==saveItem) {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setCurrentDirectory(new File("."));
+            if (e.getSource() == save) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setCurrentDirectory(new File("."));
 
-            int response = fileChooser.showSaveDialog(null);
+                int response = fileChooser.showSaveDialog(null);
 
-            if(response == JFileChooser.APPROVE_OPTION) {
-                File file;
-                PrintWriter fileOut = null;
+                if (response == JFileChooser.APPROVE_OPTION) {
+                    File file;
+                    PrintWriter fileOut = null;
 
-                file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                try {
-                    fileOut = new PrintWriter(file);
-                    fileOut.println(textArea.getText());
-                }
-                catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                finally {
-                    fileOut.close();
+                    file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                    try {
+                        fileOut = new PrintWriter(file);
+                        fileOut.println(text.getText());
+                    } catch (FileNotFoundException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    } finally {
+                        fileOut.close();
+                    }
                 }
             }
+            if (e.getSource() == exit) {
+                System.exit(0);
+            }
         }
-        if(e.getSource()==exitItem) {
-            System.exit(0);
-        }
-    }
 }
