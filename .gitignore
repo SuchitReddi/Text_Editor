@@ -26,7 +26,8 @@ bin/
 .vscode/
 
 ###idea###
-.idea
+.idea\*
+src\Editor\*
 
 ### Mac OS ###
 .DS_Store
