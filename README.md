@@ -11,5 +11,5 @@ Bold and Italic
 ![Save](./Save.png)
 **Load**
 ![Load](./Load.png)
-**Cut, Copy, Paste, Bold and Italic**
+**Cut, Copy, Paste, Delete, Bold and Italic**
 ![CCP](./Edit.png)
