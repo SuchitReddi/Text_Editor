@@ -48,8 +48,7 @@ public class TextEditor extends JFrame implements ActionListener {
 //<TextArea>
         //Creating text area for typing
         text = new JTextArea("Created by - Suchit Reddi(2010110507)" + "\n" +
-                "Can be found at https://github.com/SuchitReddi/Text_Editor" + "\n" +
-                "Bold, Italic, Underline and crossover can be found in edit\n");
+                "Can be found at https://github.com/SuchitReddi/Text_Editor");
         //Wraps the line when a character reaches the end of line
         text.setLineWrap(true);
         //Wraps the whole word the character belongs to
