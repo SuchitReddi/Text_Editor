@@ -1,5 +1,5 @@
 # Text_Editor
-A simple text editor using Java Swings.\
+A simple text editor using Java Swings, done in one day as a university project.\
 Functionalities:\
 Save, Load files\
 Cut, Copy, Paste, Delete\
