@@ -4,7 +4,7 @@ Functionalities:\
 Save, Load files\
 Cut, Copy, Paste, Delete\
 Change Font type, size\
-Bold and Italic
+Bold and Italic\
 **Editor with changeable font type and size**
 ![Editor](./Editor.png)
 **Save**
